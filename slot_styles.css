@@ -1,0 +1,110 @@
+/* Общие стили */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Шапка */
+header {
+    background-color: #1f1f1f;
+    padding: 20px 0;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+/* Навигация */
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #ff2e6d;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+nav ul li a.active {
+    font-weight: bold;
+}
+
+/* Контейнер слотов */
+.slot-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Карточка слота */
+.slot {
+    background-color: #1f1f1f;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    width: 220px;
+}
+
+.slot img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.slot h3 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+/* Кнопки (в стиле главной страницы) */
+button, .btn {
+    background-color: #ff2e6d;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease-in-out;
+}
+
+button:hover, .btn:hover {
+    background-color: #e02660;
+}
+
+/* Кнопка в слотах */
+.slot button {
+    background-color: #ff2e6d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.slot button:hover {
+    background-color: #e02660;
+}
+
+/* Подвал */
+footer {
+    background-color: #1f1f1f;
+    padding: 15px;
+    margin-top: 20px;
+}
