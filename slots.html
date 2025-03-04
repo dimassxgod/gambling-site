@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Слоты</title>
+    <link rel="stylesheet" href="slot_styles.css">
+    <script>
+        function openGame(url) {
+            window.open(url, "_blank");
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Популярные слоты</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="slots.html" class="active">Слоты</a></li>
+                <li><a href="roulette.html">Рулетка</a></li>
+                <li><a href="balance.html">Баланс</a></li>
+                <li><a href="bonus.html">Бонусы</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="slot-container">
+            <div class="slot">
+                <img src="images/sweet-bonanza.png" alt="Sweet Bonanza">
+                <h3>Sweet Bonanza</h3>
+                <button onclick="openGame('https://example.com/sweet-bonanza')">Играть</button>
+            </div>
+            <div class="slot">
+                <img src="images/dog-house.png" alt="Dog House">
+                <h3>The Dog House</h3>
+                <button onclick="openGame('https://example.com/dog-house')">Играть</button>
+            </div>
+            <div class="slot">
+                <img src="images/book-of-dead.png" alt="Book of Dead">
+                <h3>Book of Dead</h3>
+                <button onclick="openGame('https://example.com/book-of-dead')">Играть</button>
+            </div>
+            <div class="slot">
+                <img src="images/gates-of-olympus.png" alt="Gates of Olympus">
+                <h3>Gates of Olympus</h3>
+                <button onclick="openGame('https://example.com/gates-of-olympus')">Играть</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2025 Онлайн Казино. Все права защищены.</p>
+    </footer>
+</body>
+</html>
