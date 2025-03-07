@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALLCASH</title>
+    <title>ALLCASH - Онлайн Казино</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="/api/placeholder/32/32" alt="logo">
     <link rel="stylesheet" href="styles.css">
-	<link rel="icon" type="image/png" sizes="32x32" href="images/minilogo.png">
-
 </head>
 <body>
     <header>
         <div class="logo">
-            <img src="images/logo.png" alt="Логотип Казино">
+            <img src="/api/placeholder/60/60" alt="Логотип ALLCASH">
+            <div class="logo-text">ALLCASH</div>
         </div>
         <nav>
             <ul>
@@ -29,29 +32,73 @@
     </header>
 
     <main>
+        <div class="promo-banner">
+            <img src="/api/placeholder/1200/300" alt="Главный баннер с акциями">
+        </div>
+
         <section class="bonus-section">
             <h2>Бонус за регистрацию 500 кредитов!</h2>
-            <button class="claim-bonus">Забрать</button>
+            <p>Зарегистрируйтесь сейчас и получите приветственный бонус на ваш счет!</p>
+            <button class="claim-bonus">Забрать бонус</button>
         </section>
 
+        <div class="game-categories">
+            <button class="category-btn active">Все игры</button>
+            <button class="category-btn">Популярные</button>
+            <button class="category-btn">Новинки</button>
+            <button class="category-btn">Слоты</button>
+            <button class="category-btn">Настольные</button>
+        </div>
+
         <section class="games">
-            <div class="game-card" onclick="window.location.href='slots.html'">
-                <img src="images/slots.png" alt="Слоты">
+            <div class="game-card">
+                <img src="/api/placeholder/100/100" alt="Слоты">
                 <h3>Слоты</h3>
-                <p>Скоро здесь появится игра!</p>
-                <button onclick="window.location.href='slots.html'">Играть</button>
+                <p>Большой выбор популярных игровых автоматов</p>
+                <button id="playSlots">Играть</button>
             </div>
-            <div class="game-card" onclick="window.location.href='roulette.html'">
-                <img src="images/roulette.png" alt="Рулетка">
+            <div class="game-card">
+                <img src="/api/placeholder/100/100" alt="Рулетка">
                 <h3>Рулетка</h3>
-                <p>Ожидайте обновлений</p>
-                <button onclick="window.location.href='roulette.html'">Играть</button>
+                <p>Классическая рулетка с мультиплеерами</p>
+                <button id="playRoulette">Играть</button>
+            </div>
+            <div class="game-card">
+                <img src="/api/placeholder/100/100" alt="Покер">
+                <h3>Покер</h3>
+                <p>Техасский холдем и другие виды покера</p>
+                <button>Скоро</button>
+            </div>
+            <div class="game-card">
+                <img src="/api/placeholder/100/100" alt="Блэкджек">
+                <h3>Блэкджек</h3>
+                <p>Популярная карточная игра против дилера</p>
+                <button>Скоро</button>
             </div>
         </section>
+
+        <div class="live-stats">
+            <div class="stat-card">
+                <div class="stat-value">₽14,582,395</div>
+                <div class="stat-label">Выиграно сегодня</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">1,842</div>
+                <div class="stat-label">Игроков онлайн</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">₽5,000,000</div>
+                <div class="stat-label">Джекпот</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">452</div>
+                <div class="stat-label">Выплат сегодня</div>
+            </div>
+        </div>
     </main>
 
     <footer>
-        <p>© 2025 Онлайн Казино. Все права защищены.</p>
+        <p>© 2025 ALLCASH. Это демонстрационное казино без реальных денег.</p>
     </footer>
 
     <div class="modal" id="registerModal">
@@ -69,7 +116,7 @@
                 <input type="password" id="password" placeholder="Введите пароль" required>
 
                 <div class="bonus-option">
-                    <input type="checkbox" id="bonusCheckbox">
+                    <input type="checkbox" id="bonusCheckbox" checked>
                     <label for="bonusCheckbox">Получить 500 бонусных кредитов</label>
                 </div>
 
