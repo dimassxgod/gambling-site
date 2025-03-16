@@ -1,7 +1,6 @@
-CREATE DATABASE casino_db;
+CREATE DATABASE IF NOT EXISTS casino_db;
 USE casino_db;
 
--- Таблиця користувачів
 CREATE TABLE Users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(50) NOT NULL UNIQUE,
@@ -13,13 +12,11 @@ CREATE TABLE Users (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Таблиця ігор
 CREATE TABLE Games (
     id INT AUTO_INCREMENT PRIMARY KEY,
     type ENUM('roulette', 'aviator', 'slots') NOT NULL
 );
 
--- Таблиця ставок
 CREATE TABLE Bets (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
