@@ -5,6 +5,14 @@ document.addEventListener("DOMContentLoaded", () => {
     const registerModal = document.getElementById("registerModal");
     const registerForm = document.getElementById("registerForm");
     const signupBtn = document.querySelector(".signup-btn");
+	
+	const wheel = document.getElementById("wheel");
+    const spinButton = document.getElementById("spin");
+    const numbersGroup = document.getElementById("numbers");
+    let spinning = false;
+
+    const numbers = [0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24, 16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26];
+    const sectorAngle = 360 / numbers.length;
 
     // Открытие модального окна регистрации
     function openRegisterModal() {
@@ -449,6 +457,8 @@ document.addEventListener("DOMContentLoaded", () => {
             historyContainer.removeChild(historyContainer.lastChild);
         }
     }
+	
+
     
     // Функция для отображения секции с балансом
     function showBalanceSection() {
