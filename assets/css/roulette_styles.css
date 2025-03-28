@@ -1,0 +1,136 @@
+.roulette-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.roulette-wheel {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
+.wheel-image {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.roulette-controls {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.bet-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.bet-amount {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bet-btn {
+    width: 40px;
+    height: 40px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.bet-type {
+    display: flex;
+    justify-content: space-between;
+}
+
+.bet-type-btn {
+    flex: 1;
+    margin: 0 5px;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.bet-type-btn.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.spin-button {
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.spin-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+.roulette-history {
+    text-align: center;
+}
+
+.history-numbers {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.history-item {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.history-item.red {
+    background-color: red;
+}
+
+.history-item.black {
+    background-color: black;
+}
+
+.history-item.green {
+    background-color: green;
+}
+
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 15px;
+    border-radius: 5px;
+    color: white;
+    z-index: 1000;
+}
+
+.notification.success {
+    background-color: green;
+}
+
+.notification.error {
+    background-color: red;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(720deg); }
+}
