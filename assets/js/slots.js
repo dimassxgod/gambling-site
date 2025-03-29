@@ -1,3 +1,6 @@
+const SYMBOLS = ["🍒", "🍋", "🍊", "🍇", "7️⃣"];
+const PAYOUTS = [3, 5, 8, 10, 50];
+
 export function showSlotsSection() {
     const mainContent = document.querySelector(".main-content");
     
@@ -71,15 +74,15 @@ function startGame(gameId) {
         showNotification("Для игры необходимо зарегистрироваться", "error");
         return;
     }
-    
-    const gameModal = createGameModal(gameId);
+
+    const gameDetails = getGameDetails(gameId);
+    const gameModal = createGameModal(gameId, gameDetails);
     document.body.appendChild(gameModal);
     gameModal.style.display = "flex";
-    
-    if (gameId.startsWith("slot")) {
-        initializeSlotGame(gameModal);
-    }
+
+    initializeSlotGame(gameModal, gameId);
 }
+
 
 function createGameModal(gameId) {
     const gameModal = document.createElement("div");
@@ -169,33 +172,31 @@ function createSlotGameContent() {
     `;
 }
 
-function initializeSlotGame(gameModal) {
+function initializeSlotGame(gameModal, gameId) {
     const reels = [
         gameModal.querySelector("#reel1"),
         gameModal.querySelector("#reel2"),
         gameModal.querySelector("#reel3")
     ];
-    
-    const symbols = ["🍒", "🍋", "🍊", "🍇", "7️⃣"];
-    
+
+    // Инициализация начальных символов
     reels.forEach(reel => {
+        reel.innerHTML = '';
         for (let i = 0; i < 3; i++) {
-            const symbolEl = document.createElement("div");
-            symbolEl.className = "slot-symbol";
-            symbolEl.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-            reel.appendChild(symbolEl);
+            const symbol = document.createElement("div");
+            symbol.className = "slot-symbol";
+            symbol.textContent = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+            reel.appendChild(symbol);
         }
     });
-    
-    const minusBtn = gameModal.querySelector(".bet-btn.minus");
-    const plusBtn = gameModal.querySelector(".bet-btn.plus");
-    const betInput = gameModal.querySelector("#slot-bet-value");
+
     const spinBtn = gameModal.querySelector("#spin-slot-btn");
-    
-    minusBtn.addEventListener("click", () => adjustBet(betInput, -10));
-    plusBtn.addEventListener("click", () => adjustBet(betInput, 10));
-    
-    spinBtn.addEventListener("click", () => spinSlot(gameModal, reels, symbols));
+    let isSpinning = false;
+
+    spinBtn.addEventListener("click", () => {
+        if (isSpinning) return;
+        spinSlot(gameModal, reels, gameId);
+    });
 }
 
 function adjustBet(betInput, change) {
@@ -204,57 +205,54 @@ function adjustBet(betInput, change) {
     betInput.value = value;
 }
 
-function spinSlot(gameModal, reels, symbols) {
-    const spinBtn = gameModal.querySelector("#spin-slot-btn");
-    const winDisplay = gameModal.querySelector("#win-amount");
+function spinSlot(gameModal, reels, gameId) {
     const betInput = gameModal.querySelector("#slot-bet-value");
-    
     const betAmount = parseInt(betInput.value, 10);
     const currentCredits = parseInt(document.getElementById("credits").textContent.match(/\d+/)[0], 10);
+    const spinBtn = gameModal.querySelector("#spin-slot-btn");
     
     if (betAmount > currentCredits) {
         showNotification("Недостаточно кредитов для ставки", "error");
         return;
     }
-    
-    updateCredits(-betAmount);
-    winDisplay.textContent = "0";
+
+    isSpinning = true;
     spinBtn.disabled = true;
     spinBtn.textContent = "ВРАЩЕНИЕ...";
-    
+    updateCredits(-betAmount);
+
+    // Генерация результатов
     const results = [];
-    
     reels.forEach((reel, index) => {
-        reel.innerHTML = "";
-        reel.style.animation = `spin-reel ${1 + index * 0.5}s ease-out`;
-        
-        const result = Math.floor(Math.random() * symbols.length);
+        reel.style.animation = `spin 0.5s ${index * 0.3}s cubic-bezier(0.25, 0.1, 0.25, 1) 3`;
+        const result = Math.floor(Math.random() * SYMBOLS.length);
         results.push(result);
-        
-        for (let i = 0; i < 3; i++) {
-            const symbolEl = document.createElement("div");
-            symbolEl.className = "slot-symbol";
-            symbolEl.textContent = symbols[(result + i) % symbols.length];
-            reel.appendChild(symbolEl);
-        }
     });
-    
+
+    // Обновление символов после анимации
     setTimeout(() => {
-        reels.forEach(reel => {
+        reels.forEach((reel, index) => {
+            reel.innerHTML = '';
+            for (let i = 0; i < 3; i++) {
+                const symbol = document.createElement("div");
+                symbol.className = "slot-symbol";
+                const symbolIndex = (results[index] + i) % SYMBOLS.length;
+                symbol.textContent = SYMBOLS[symbolIndex];
+                reel.appendChild(symbol);
+            }
             reel.style.animation = "none";
         });
-        
+
+        // Проверка выигрыша
         const win = calculateWin(results, betAmount);
-        winDisplay.textContent = win;
-        
         if (win > 0) {
             updateCredits(win);
-            showNotification(`Поздравляем! Вы выиграли ${win} кредитов!`, "success");
+            showNotification(`Победа! ${win} кредитов!`, "success");
         }
-        
+
         spinBtn.disabled = false;
         spinBtn.textContent = "СПИН!";
-        
+        isSpinning = false;
         updateGamesPlayed();
     }, 3000);
 }
