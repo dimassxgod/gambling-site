@@ -1,8 +1,3 @@
-// slots.js
-import { showNotification } from './utils.js';
-import { updateCredits } from './utils.js';
-import { getUserData } from './utils.js';
-
 export function showSlotsSection() {
     const mainContent = document.querySelector(".main-content");
     
@@ -284,3 +279,5 @@ function updateGamesPlayed() {
         localStorage.setItem("allcashUserData", JSON.stringify(userData));
     }
 }
+
+window.showSlotsSection = showSlotsSection;

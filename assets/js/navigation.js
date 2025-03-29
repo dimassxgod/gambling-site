@@ -32,13 +32,28 @@ function showContent(contentId) {
             welcomeBanner.style.display = "flex";
             break;
         case "slotsBtn":
-            showSlotsSection();
+            // Import and use the showSlotsSection function from slots.js
+            if (typeof window.showSlotsSection === 'function') {
+                window.showSlotsSection();
+            } else {
+                console.error("Function showSlotsSection is not defined");
+            }
             break;
         case "rouletteBtn":
-            showRouletteSection();
+            // Import and use the showRouletteSection function from roulette.js
+            if (typeof window.showRouletteSection === 'function') {
+                window.showRouletteSection();
+            } else {
+                console.error("Function showRouletteSection is not defined");
+            }
             break;
         case "balanceBtn":
-            showBalanceSection();
+            // Import and use the showBalanceSection function from balance.js
+            if (typeof window.showBalanceSection === 'function') {
+                window.showBalanceSection();
+            } else {
+                console.error("Function showBalanceSection is not defined");
+            }
             break;
         case "bonusBtn":
             // Показываем только секцию бонусов
@@ -48,13 +63,4 @@ function showContent(contentId) {
             if (bonusSection) bonusSection.style.display = "block";
             break;
     }
-}
-
-// Заглушки для функций, которые вы определите в соответствующих файлах
-function showSlotsSection() {
-    console.log("Slots section");
-}
-
-function showBalanceSection() {
-    console.log("Balance section");
 }
