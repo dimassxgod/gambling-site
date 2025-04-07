@@ -1,14 +1,21 @@
 // balance.js
-import { showNotification } from './utils.js';
-import { updateCredits } from './utils.js';
-import { getUserData } from './utils.js';
-
-export function showBalanceSection() {
+// Функция для отображения баланса
+function showBalanceSection() {
     const mainContent = document.querySelector(".main-content");
+    
+    // Сначала скрываем все основные элементы на странице
+    const welcomeBanner = document.querySelector('.welcome-banner');
+    if (welcomeBanner) welcomeBanner.style.display = 'none';
+    
+    const contentSections = document.querySelectorAll('.content-section:not(#balance-section)');
+    contentSections.forEach(section => {
+        section.style.display = 'none';
+    });
     
     let balanceSection = document.getElementById("balance-section");
     
     if (!balanceSection) {
+        // Получаем данные пользователя или используем значения по умолчанию
         const userData = getUserData();
         const username = userData.username || "Гость";
         const credits = userData.credits || 1000;
@@ -24,14 +31,14 @@ export function showBalanceSection() {
         balanceSection.innerHTML = `
             <div class="section-header">
                 <div class="section-title">
-                    <img src="/api/placeholder/24/24" alt="Balance" class="section-icon">
+                    <img src="assets/images/icons/balance.png" alt="Balance" class="section-icon">
                     Баланс и профиль
                 </div>
             </div>
             <div class="profile-container">
                 <div class="profile-info">
                     <div class="profile-avatar">
-                        <img src="/api/placeholder/100/100" alt="Avatar" class="avatar-image">
+                        <img src="assets/images/avatar1.jfif" alt="Avatar" class="avatar-image">
                     </div>
                     <div class="profile-details">
                         <h2>${username}</h2>
@@ -41,7 +48,7 @@ export function showBalanceSection() {
                 </div>
                 <div class="profile-balance">
                     <h3>Баланс</h3>
-                    <div id="credits" class="balance-amount">💰 ${credits} кредитов</div>
+                    <div class="balance-amount">💰 ${credits} кредитов</div>
                     <button class="deposit-btn">Пополнить баланс</button>
                     <button class="withdraw-btn">Вывести средства</button>
                 </div>
@@ -64,6 +71,67 @@ export function showBalanceSection() {
     } else {
         balanceSection.style.display = "block";
     }
+}
+
+// Вспомогательные функции
+function getUserData() {
+    // Получаем данные пользователя из localStorage или возвращаем значения по умолчанию
+    const userDataString = localStorage.getItem('userData');
+    if (userDataString) {
+        return JSON.parse(userDataString);
+    }
+    return {
+        username: "Гость",
+        credits: 1000,
+        registered: null,
+        gamesPlayed: 0
+    };
+}
+
+function updateCredits(amount) {
+    // Обновляем баланс кредитов
+    const userData = getUserData();
+    userData.credits = (userData.credits || 1000) + amount;
+    
+    // Обновляем отображение в хедере
+    const creditsElement = document.getElementById("credits");
+    if (creditsElement) {
+        creditsElement.textContent = `💰 ${userData.credits} кредитов`;
+    }
+    
+    // Обновляем отображение на странице баланса
+    const balanceAmount = document.querySelector(".balance-amount");
+    if (balanceAmount) {
+        balanceAmount.textContent = `💰 ${userData.credits} кредитов`;
+    }
+    
+    // Сохраняем обновленные данные
+    localStorage.setItem('userData', JSON.stringify(userData));
+    
+    return userData.credits;
+}
+
+function showNotification(message, type = "info") {
+    // Создаем элемент уведомления
+    const notification = document.createElement("div");
+    notification.className = `notification ${type}`;
+    notification.textContent = message;
+    
+    // Добавляем уведомление в DOM
+    document.body.appendChild(notification);
+    
+    // Анимация появления
+    setTimeout(() => {
+        notification.classList.add("visible");
+    }, 10);
+    
+    // Автоматическое удаление через 3 секунды
+    setTimeout(() => {
+        notification.classList.remove("visible");
+        setTimeout(() => {
+            document.body.removeChild(notification);
+        }, 300); // Время для анимации исчезновения
+    }, 3000);
 }
 
 function showDepositModal() {
@@ -122,8 +190,8 @@ function showDepositModal() {
 }
 
 function showWithdrawModal() {
-    const creditsElement = document.getElementById("credits");
-    const currentCredits = parseInt(creditsElement.textContent.match(/\d+/)[0], 10);
+    const userData = getUserData();
+    const currentCredits = userData.credits || 1000;
     
     const withdrawModal = document.createElement("div");
     withdrawModal.className = "modal";
@@ -202,11 +270,32 @@ function addTransaction(type, amount) {
     `;
     
     transactionsContainer.insertBefore(transactionElement, transactionsContainer.firstChild);
+    
+    // Сохраняем транзакцию в локальное хранилище
+    saveTransaction(type, amount);
 }
 
-export function updateBalanceDisplay(newBalance) {
-    const creditsElement = document.getElementById("credits");
-    if (creditsElement) {
-        creditsElement.textContent = `💰 ${newBalance} кредитов`;
-    }
+function saveTransaction(type, amount) {
+    const transactions = getTransactions();
+    transactions.push({
+        date: new Date().toISOString(),
+        type: type,
+        amount: amount
+    });
+    
+    localStorage.setItem('transactions', JSON.stringify(transactions));
 }
+
+function getTransactions() {
+    const transactionsString = localStorage.getItem('transactions');
+    if (transactionsString) {
+        return JSON.parse(transactionsString);
+    }
+    return [];
+}
+
+// Экспортируем функции для использования в других файлах
+window.showBalanceSection = showBalanceSection;
+window.updateCredits = updateCredits;
+window.showNotification = showNotification;
+window.getUserData = getUserData;
