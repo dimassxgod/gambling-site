@@ -1,0 +1,85 @@
+/* Шапка */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15, 17, 34, 0.6);
+    padding: 10px 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(70, 73, 94, 0.3);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px;
+    margin-right: 10px;
+    transition: transform 0.3s;
+}
+
+.logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: #9aa4bf;
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: all 0.3s;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+nav a.active, nav a:hover {
+    color: white;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+#credits {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    color: #b5bfd0;
+}
+
+.login-btn {
+    background: #4f7df9;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    color: white;
+    border-radius: 4px;
+    font-weight: 500;
+    transition: all 0.3s;
+    font-size: 14px;
+}
+
+.login-btn:hover {
+    background: #3a66e0;
+}

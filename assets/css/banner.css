@@ -1,0 +1,59 @@
+/* Приветственный баннер */
+.welcome-banner {
+    background: linear-gradient(90deg, rgba(30, 33, 58, 0.8), rgba(30, 33, 58, 0.4));
+    background-size: cover;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 30px;
+    height: 280px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+    width: 100%;
+}
+
+.welcome-content {
+    z-index: 1;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%; /* Set a specific width for the content area */
+}
+
+.welcome-title {
+    font-size: 48px;
+    color: #4f7df9;
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-transform: lowercase;
+}
+
+.signup-btn {
+    background: #4f7df9;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: fit-content; /* Make button only as wide as its content */
+    max-width: 200px; /* Set a maximum width */
+}
+
+.signup-btn:hover {
+    background: #3a66e0;
+}
+
+.welcome-image {
+    flex: 1; /* Take up remaining space */
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
+    margin: 0;
+    padding: 0;
+}

@@ -1,0 +1,56 @@
+/* Основной контейнер */
+.main-container {
+    display: flex;
+    flex: 1;
+}
+
+/* Основной контент */
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Секции контента */
+.content-section {
+    background: rgba(30, 33, 58, 0.6);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 30px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(70, 73, 94, 0.3);
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.section-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.section-dropdown {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #9aa4bf;
+    cursor: pointer;
+}
+
+.dropdown-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}

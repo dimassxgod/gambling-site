@@ -1,0 +1,48 @@
+/* Боковая панель */
+.sidebar {
+    width: 200px;
+    background: rgba(15, 17, 34, 0.6);
+    border-right: 1px solid rgba(70, 73, 94, 0.3);
+    padding: 20px 0;
+    flex-shrink: 0;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    font-size: 12px;
+    color: #6b7184;
+    padding: 10px 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.sidebar-item {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.3s;
+    font-size: 14px;
+    color: #9aa4bf;
+}
+
+.sidebar-item:hover {
+    background: rgba(79, 125, 249, 0.1);
+    color: white;
+}
+
+.sidebar-icon {
+    margin-right: 12px;
+    width: 20px;
+    height: 20px;
+}
+
+.sidebar-divider {
+    height: 1px;
+    background: rgba(70, 73, 94, 0.3);
+    margin: 10px 0;
+}
