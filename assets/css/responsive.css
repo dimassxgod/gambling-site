@@ -1,0 +1,78 @@
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid rgba(70, 73, 94, 0.3);
+        padding: 10px;
+    }
+    
+    .sidebar-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .sidebar-header {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .sidebar-item {
+        padding: 10px 15px;
+    }
+    
+    .sidebar-divider {
+        display: none;
+    }
+    
+    .chat-sidebar {
+        width: 100%;
+        border-left: none;
+        border-top: 1px solid rgba(70, 73, 94, 0.3);
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .user-info {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .welcome-banner {
+        flex-direction: column;
+        padding: 20px;
+        height: auto;
+        text-align: center;
+    }
+    
+    .welcome-content {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+    
+    .welcome-image {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+    
+    .games-grid {
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    }
+}
