@@ -1,0 +1,16 @@
+{
+    "name": "gambling-site",
+    "version": "1.0.0",
+    "description": "Локальный сервер для сайта азартных игр",
+    "main": "server/server.js",
+    "scripts": {
+      "start": "node server/server.js",
+      "dev": "nodemon server/server.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2"
+    },
+    "devDependencies": {
+      "nodemon": "^3.0.3"
+    }
+  }
