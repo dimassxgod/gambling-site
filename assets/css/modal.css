@@ -1,40 +1,41 @@
 /* Модальное окно */
 .modal {
+    display: none;
     position: fixed;
-    top: 0;
+    z-index: 1000;
     left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
+    overflow: auto;
     background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
 }
 
 .modal-content {
-    background-color: #1f2937;
-    border-radius: 10px;
-    width: 100%;
-    max-width: 450px;
-    padding: 25px;
+    background-color: #1a1c24;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #36383f;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     position: relative;
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-    border: 1px solid rgba(70, 73, 94, 0.3);
-    animation: slideIn 0.4s;
 }
 
 .close-btn {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    font-size: 24px;
-    color: #9ca3af;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
     cursor: pointer;
 }
 
-.close-btn:hover {
-    color: #4f7df9;
+.close-btn:hover,
+.close-btn:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .modal h2 {

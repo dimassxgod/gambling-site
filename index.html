@@ -36,7 +36,16 @@
         </nav>
         <div class="user-info">
             <span id="credits">💰 1000 кредитов</span>
-            <button id="openRegister" class="login-btn">Войти</button>
+            <!-- Контейнер для кнопок входа/регистрации -->
+            <div id="loginContainer">
+                <button id="openRegister" class="login-btn">Войти</button>
+                <button id="openLogin" class="login-btn">Логин</button>
+            </div>
+            <!-- Панель пользователя (изначально скрыта) -->
+            <div id="userPanel" style="display: none;">
+                <span id="usernameDisplay"></span>
+                <button id="logout" class="btn">Выйти</button>
+            </div>
         </div>
     </header>
 
@@ -210,6 +219,7 @@
         </aside>
     </div>
 
+    <!-- Модальное окно регистрации -->
     <div class="modal" id="registerModal">
         <div class="modal-content">
             <span class="close-btn" id="closeRegister">&times;</span>
@@ -231,18 +241,36 @@
 
                 <button type="submit">Зарегистрироваться</button>
             </form>
-            <p class="login-link">Уже есть аккаунт? <a href="#">Войти</a></p>
+            <p class="login-link">Уже есть аккаунт? <a href="#" id="switchToLogin">Войти</a></p>
         </div>
     </div>
 
+    <!-- Модальное окно входа -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeLogin">&times;</span>
+            <h2>Вход в систему</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="loginUsername">Имя пользователя:</label>
+                    <input type="text" id="loginUsername" name="loginUsername" placeholder="Введите имя пользователя" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Пароль:</label>
+                    <input type="password" id="loginPassword" name="loginPassword" placeholder="Введите пароль" required>
+                </div>
+                <button type="submit" class="btn">Войти</button>
+            </form>
+            <p>Нет аккаунта? <a href="#" id="switchToRegister">Зарегистрироваться</a></p>
+        </div>
+    </div>
 
     <script src="assets/js/utils.js"></script>
-	<script src="assets/js/navigation.js"></script>
-	<script src="assets/js/slots.js"></script>
-	<script src="assets/js/fix-slots.js"></script>
-	<script src="assets/js/balance.js"></script>
-	<script src="assets/js/main.js"></script>
-	<script src="assets/js/roulette.js"></script>
-	<script src="assets/js/main.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/slots.js"></script>
+    <script src="assets/js/fix-slots.js"></script>
+    <script src="assets/js/balance.js"></script>
+    <script src="assets/js/roulette.js"></script>
 </body>
 </html>
