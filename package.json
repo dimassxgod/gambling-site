@@ -5,10 +5,12 @@
     "main": "server/server.js",
     "scripts": {
       "start": "node server/server.js",
-      "dev": "nodemon server/server.js"
+      "dev": "nodemon server/server.js",
+      "init-db": "mysql -u root -p < database/schema.sql"
     },
     "dependencies": {
-      "express": "^4.18.2"
+      "express": "^4.18.2",
+      "mysql2": "^3.6.5"
     },
     "devDependencies": {
       "nodemon": "^3.0.3"
