@@ -159,7 +159,6 @@ app.post('/api/bet', async (req, res) => {
     }
 });
 
-// Остальные endpoint'ы остаются без изменений
 // Получение списка игр с кэшированием
 let gamesCache = null;
 let cacheTimestamp = 0;
